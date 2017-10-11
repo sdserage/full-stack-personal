@@ -1,0 +1,12 @@
+CREATE TABLE Users(
+    UserID SERIAL PRIMARY KEY NOT NULL,
+    Company VARCHAR(80),
+    Email VARCHAR(400),
+    UserName VARCHAR(80),
+    FirstName VARCHAR(80),
+    LastName VARCHAR(80),
+    PhoneNumber VARCHAR(30),
+    isEmployee BOOLEAN DEFAULT FALSE NOT NULL,
+    isAdmin BOOLEAN DEFAULT FALSE NOT NULL,
+    AuthID TEXT NOT NULL
+);

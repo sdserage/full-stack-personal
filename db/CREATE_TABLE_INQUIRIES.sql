@@ -1,0 +1,7 @@
+CREATE TABLE Inquiries(
+    InquiryID SERIAL PRIMARY KEY NOT NULL,
+    UserID INT REFERENCES Users(UserID),
+    isTest BOOLEAN DEFAULT FALSE,
+    Date DATE,
+    isArchived BOOLEAN DEFAULT FALSE
+);

@@ -41,10 +41,30 @@ passport.deserializeUser((obj, done)=>{
 
 /* ---End Points--- */
 
+// auth0
+app.get('/auth', passport.authenticate('auth0'));
+app.get('/auth/callback', passport.authenticate('auth0', {
+  successRedirect: '/success',
+  failureRedirect: '/auth'
+}));
+app.get('/auth/me', (req, res)=>{
+  if(!req.user){
+    return res.status(404).send('<h1>User not found.</h1>')
+  }else{
+    return res.status(200).send(req.user);
+  }
+});
+app.get('/auth/logout', (req, res)=>{
+  req.logOut();
+  res.redirect(302, 'http://localhost:3000');
+});
 
-
+// Test Endpoints
+app.get('/success', (req, res)=>{
+  res.status(200).send('<h2 style="color: green">Success!</h2>');
+});
 app.get('/test', (req,res)=>{
-  res.status(200).send('Hello world');
+  res.status(200).send('<h1>Hello world</h1>');
 });
 
 /* ---Listener--- */
