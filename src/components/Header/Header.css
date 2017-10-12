@@ -1,0 +1,25 @@
+.header {
+  color: white;
+  background-color: #931621; }
+  .header nav, .header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+  .header img {
+    height: 15px;
+    width: 30px;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    padding: 10px;
+    margin: 10px 20px 10px 20px; }
+  .header li, .header div {
+    border-style: solid;
+    border-color: #931621;
+    border-width: 2px;
+    padding: 10px;
+    margin: 10px 20px 10px 20px;
+    transition: .5s border-color; }
+  .header li:hover, .header div:hover {
+    border-color: white;
+    transition: border-color 1s; }

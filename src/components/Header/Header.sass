@@ -1,0 +1,39 @@
+@import '../../themeController'
+$headerLogoBoxLength: 15px
+
+.header
+  color: $lighterColor
+  //height: 100px
+  background-color: $mediumColor
+
+  nav
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+  img
+    height: $headerLogoBoxLength
+    width: $headerLogoBoxLength * 2
+    border-style: solid
+    border-color: $lighterColor
+    border-width: 2px
+    padding: 10px
+    margin: 10px 20px 10px 20px
+
+  ul
+    @extend nav
+
+  li
+    border-style: solid
+    border-color: $mediumColor
+    border-width: 2px
+    padding: 10px
+    margin: 10px 20px 10px 20px
+    transition: .5s border-color
+
+  li:hover
+    border-color: $lighterColor
+    transition: border-color 1s
+
+  div
+    @extend li

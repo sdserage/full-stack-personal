@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+//import Header from '../Header/Header';
 
 class Home extends Component{
   // constructor(props){
@@ -6,7 +7,9 @@ class Home extends Component{
   // }
   render(){
     return(
-      <a href={process.env.REACT_APP_LOGIN}><button>Login/Register</button></a>
+      <div className="home">
+        Home
+      </div>
     );
   }
 }
