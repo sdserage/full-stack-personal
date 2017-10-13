@@ -15,10 +15,10 @@ export function getUserInfo(){
     .then(res => {
       return res.data
     })
-    // .catch(err => {
-    //   console.log(err)
-    //   return {userid: null};
-    // });
+    .catch(err => {
+      console.log(err)
+      return {userid: null};
+    });
   return {
     type: GET_USER_INFO,
     payload: userData

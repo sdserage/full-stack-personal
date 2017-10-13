@@ -4,13 +4,16 @@ const express       = require('express')
     , bodyParser    = require('body-parser')
     , massive       = require('massive')
     , passport      = require('passport')
-    , Auth0Strategy = require('passport-auth0');
+    , Auth0Strategy = require('passport-auth0')
+    , cors          = require('cors');
 
 // Create express app
 const app = express();
 
 /* ---Middleware--- */
 
+// cors
+app.use(cors());
 // Body Parser
 app.use(bodyParser.json());
 // Session Config
@@ -36,6 +39,7 @@ passport.use(new Auth0Strategy({ // Set strategy
     callbackURL: process.env.CALLBACK_URL
   },
   function(accessToken, refreshToken,extraParams, profile, done){
+    //console.log(profile);
     //return done(null, profile); // will need to be edited
     const db = app.get('db'); // Sets the db to a variable
     //console.log('Profile object:\n\n',profile); // Uncomment to test profile object
@@ -77,7 +81,7 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 }));
 app.get('/auth/me', (req, res)=>{
   if(!req.user){
-    return res.status(404).send({userid: null}); //falsey value, used to indicate a user is not in session.
+    return res.status(200).send({userid: null}); //falsey value, used to indicate a user is not in session.
   }else{
     return res.status(200).send(req.user);
   }
