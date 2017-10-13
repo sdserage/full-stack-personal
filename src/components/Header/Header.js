@@ -1,18 +1,9 @@
 import React, {Component} from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
-import {getUserInfo} from '../../ducks/users_reducer';
 import {connect} from 'react-redux';
 
 class Header extends Component{
-  // constructor(props){
-  //   super(props);
-  // };
-
-  componentDidMount(){
-    console.log('did mount')
-    this.props.getUserInfo();
-  }
 
   render(){
     let user = this.props.user;
@@ -65,12 +56,11 @@ class Header extends Component{
   }
 }
 
+/// This needs to change
 let mapStateToProps = state =>{
-  //console.log(state.user)
-  //console.log(state)
   return {
     user: state.users.user
   };
 }
 
-export default connect(mapStateToProps, {getUserInfo})(Header);
+export default connect(mapStateToProps)(Header);
