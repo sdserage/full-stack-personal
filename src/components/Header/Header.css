@@ -22,4 +22,4 @@
     transition: .5s border-color; }
   .header li:hover, .header div:hover {
     border-color: white;
-    transition: border-color 1s; }
+    transition: border-color 1.80s; }

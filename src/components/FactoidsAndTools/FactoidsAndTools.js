@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import Header from '../Header/Header';
+import './FactoidsAndTools.css';
 
 class FactoidsAndTools extends Component{
   // constructor(props){

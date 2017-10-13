@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import Header from '../Header/Header';
+import './About.css';
 
 class About extends Component{
   // constructor(props){

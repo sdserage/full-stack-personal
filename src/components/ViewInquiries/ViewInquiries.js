@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import Header from '../Header/Header';
+import './ViewInquiries.css';
 
 class ViewInquiries extends Component{
   // constructor(props){

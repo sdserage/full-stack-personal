@@ -1,9 +1,20 @@
 import React, {Component} from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
+import {getUserInfo} from '../../ducks/users_reducer';
+import {connect} from 'react-redux';
 
 class Header extends Component{
+  // constructor(props){
+  //   super(props);
+  // };
+
+  componentDidMount(){
+    this.props.getUserInfo();
+  }
+
   render(){
+    let user = this.props.user;
     return(
       <header className='header'>
         <nav>
@@ -37,13 +48,28 @@ class Header extends Component{
             </Link>
 
           </ul>
-          <a href={process.env.REACT_APP_LOGIN}>
-            <div>Login/Register</div>
-          </a>
+          {
+            user.userid ?
+              (<div>{user.username}</div>)
+            :
+            (
+              <a href={process.env.REACT_APP_LOGIN}>
+                <div>Login/Register</div>
+              </a>
+            )
+          }
         </nav>
       </header>
     );
   }
 }
 
-export default Header;
+let mapStateToProps = state =>{
+  //console.log(state.user)
+  //console.log(state)
+  return {
+    user: state.users.user
+  };
+}
+
+export default connect(mapStateToProps, {getUserInfo})(Header);

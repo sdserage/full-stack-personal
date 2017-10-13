@@ -77,7 +77,7 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 }));
 app.get('/auth/me', (req, res)=>{
   if(!req.user){
-    return res.status(404).send('<h1>User not found.</h1>')
+    return res.status(404).send({userid: null}); //falsey value, used to indicate a user is not in session.
   }else{
     return res.status(200).send(req.user);
   }
