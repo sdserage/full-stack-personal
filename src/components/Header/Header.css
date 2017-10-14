@@ -13,13 +13,24 @@
     border-width: 2px;
     padding: 10px;
     margin: 10px 20px 10px 20px; }
-  .header li, .header div {
+  .header li, .header .user-menu-off, .header .login-or-register {
     border-style: solid;
     border-color: #931621;
     border-width: 2px;
     padding: 10px;
     margin: 10px 20px 10px 20px;
     transition: .5s border-color; }
-  .header li:hover, .header div:hover {
+  .header li:hover, .header .user-menu-off:hover, .header .login-or-register:hover {
     border-color: white;
     transition: border-color 1.80s; }
+
+.user-menu-on {
+  color: #30BCED;
+  background-color: #545E75;
+  position: absolute;
+  right: 0;
+  width: 200px;
+  height: 300px;
+  border-width: 0;
+  margin: 0;
+  padding: 0 10px 0 10px; }
