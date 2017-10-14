@@ -65,7 +65,7 @@ class Header extends Component{
             user.userid ?
 
               /* Renders when a user is logged in */
-              <div className="user-menu-off" onClick={userMenuDisplayed ? null : toggleUserMenuOn}>
+              <div className="user-menu-off" onClick={userMenuDisplayed ? toggleUserMenuOff : toggleUserMenuOn}>
                 {user.username}
               </div>
 
