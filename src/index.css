@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -47,4 +48,4 @@ a:link, a:visited, a:hover, a:active {
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif; }
+  font-family: "Ubuntu", sans-serif; }

@@ -1,24 +1,99 @@
 @import '../../themeController'
 
-.product-inquiry
+.item-template
+  width: 50vw
+  margin-top: 20px
+  background: $lightColor
+  color: $darkerColor
+  padding: 0px 40px 10px 40px
+  border-radius: 5px
+  display: grid
+  grid-template-columns: 1fr [a] 1fr [b]
+  grid-template-rows: auto
 
-.inquiry-list
+.product-inquiry
   display: flex
   flex-direction: column
   align-items: center
+  align-content: stretch
+
+.inquiry-list
+  @extend .product-inquiry
 
   .valve
-    margin-top: 20px
-    background: $mediumColor
-    color: $lighterColor
-    padding: 10px 40px 10px 40px
+    @extend .item-template
+    grid-template-areas: "header header" "media pressure" "temperature pipesize" "pipesize-info pipesize-info" "additional-info additional-info"
+  .valve > *
+    margin-top: 10px
+
   .actuator
-    @extend .valve
+    @extend .item-template
+    grid-template-areas: "header header" "valvesize torque" "valve-desc valve-desc" "stemdimensions returntype" "additional-info additional-info"
+  .actuator > *
+    margin-top: 10px
 
   .dust-collector
-    @extend .valve
+    @extend .item-template
+    grid-template-areas: "header header" "temperature temperature" "particulatetype particulatetype" "particulatesize particulatesize" "additional-info additional-info"
+  .dust-collector > *
+    margin-top: 10px
 
   .instrumentation
     @extend .valve
 
+.media
+  grid-area: media
+
+.pressure
+  grid-area: pressure
+
+.temperature
+  grid-area: temperature
+
+.pipesize
+  grid-area: pipesize
+
+.pipesize-info
+  grid-area: pipesize-info
+
+.additional-info
+  grid-area: additional-info
+
+.valvesize
+  grid-area: valvesize
+
+.torque
+  grid-area: torque
+
+.valve-desc
+  grid-area: valve-desc
+
+.stemdimensions
+  grid-area: stemdimensions
+
+.returntype
+  grid-area: returntype
+
+.particulatetype
+  grid-area: particulatetype
+
+.particulatesize
+  grid-area: particulatesize
+
+.item-header
+  grid-area: header
+  font-size: 1.17em
+  font-weight: 700
+  text-align: center
+  color: $darkColor
+
 .add-item
+  font-size: 1.5em
+  font-weight: 700
+  text-align: center
+  width: 50vw
+  margin-top: 20px
+  background: $lightColor
+  color: $mediumColor
+  padding: 10px 40px 10px 40px
+  border-radius: 5px

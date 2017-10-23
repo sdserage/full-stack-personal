@@ -20,7 +20,7 @@ class ProductInquiry extends Component{
         <ul className="inquiry-list">
           {mappedItemList}
         </ul>
-        <div className="add-item">+ Add Item</div>
+        <h2 className="add-item">+ Add Item</h2>
       </div>
     );
   }
