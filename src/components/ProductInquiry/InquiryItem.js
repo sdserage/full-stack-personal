@@ -47,26 +47,45 @@ const InquiryItem = props =>{
         <div className="valve">
           <h3>Valve</h3>
           <p>Media: {item.media}</p>
-          <p>Pressure: {item.pressure}psi ({item.pressure}lb/in&#178)</p>
-          <p>Temperature: {item.temperature}&#x2109 ({(item.temperature-32)/1.8}&#x2103)</p>
-          <p>Pipe Size: {item.pipesize}inch(es) ({item.pipesize}cm)</p>
-          <p>Pipe Size Additional Infomation:<br/>{item.pipesizeadditionalinfo}</p>
+          <p>Pressure: {item.pressure} psi ({item.pressure} lb/in&#178;)</p>
+          <p>Temperature: {item.temperature}&#x2109; ({((item.temperature-32)/1.8).toFixed(3)}&#x2103;)</p>
+          <p>Pipe Size: {item.pipesize} inch(es) ({item.pipesize} cm)</p>
+          <p>Pipe Size Additional Information:<br/>{item.pipesizeadditionalinfo}</p>
           <p>Additional Item Information:<br/>{item.additionaliteminfo}</p>
         </div>
       );
     case 'Actuator':
       return(
         <div className='actuator'>
+          <h3>Actuator</h3>
+          <p>Valve Size: {item.valvesize} inch(es) ({item.valvesize} cm)</p>
+          <p>Torque: {item.torque} units ({item.torque} other units)</p>
+          <p>Valve Description:<br/>{item.valvedescription}</p>
+          <p>Stem Dimensions: {item.stemdimensions}</p>
+          <p>Return Type: {item.returntype}</p>
+          <p>Additional Item Information:<br/>{item.additionaliteminfo}</p>
         </div>
       );
     case 'Dust Collector':
       return(
         <div className='dust-collector'>
+          <h3>Dust Collector</h3>
+          <p>Temperature: {item.temperature}&#x2109; ({((item.temperature-32)/1.8).toFixed(3)}&#x2103;)</p>
+          <p>Particulate Type:<br/>{item.particulatetype.map(particulate=>` ${particulate}`)}</p>
+          <p>Particulate Size: {item.particulatesize} units</p>
+          <p>Additional Item Information:<br/>{item.additionaliteminfo}</p>
         </div>
       );
     case 'Instrumentation':
       return(
         <div className='instrumentation'>
+          <h3>Instrumentation</h3>
+          <p>Media: {item.media}</p>
+          <p>Pressure: {item.pressure} psi ({item.pressure} lb/in&#178;)</p>
+          <p>Temperature: {item.temperature}&#x2109; ({((item.temperature-32)/1.8).toFixed(3)}&#x2103;)</p>
+          <p>Pipe Size: {item.pipesize} inch(es) ({item.pipesize} cm)</p>
+          <p>Pipe Size Additional Information:<br/>{item.pipesizeadditionalinfo}</p>
+          <p>Additional Item Information:<br/>{item.additionaliteminfo}</p>
         </div>
       );
     default:

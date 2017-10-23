@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './ProductInquiry.css';
 import {connect} from 'react-redux';
 import {addInquiryItem, removeInquiryItem, submitInquiry} from '../../ducks/inquiries_reducer';
+// Components
+import InquiryItem from './InquiryItem';
 
 class ProductInquiry extends Component{
   // constructor(props){
@@ -10,7 +12,8 @@ class ProductInquiry extends Component{
   render(){
     let {itemList} = this.props;
     let mappedItemList = itemList.map( (item,index) =>{
-      return <li key={index}>{item.itemtype}</li>;
+      //return <li key={index}>{item.itemtype}</li>;
+      return <li key={index}><InquiryItem item={item}/></li>
     });
     return(
       <div className="product-inquiry">

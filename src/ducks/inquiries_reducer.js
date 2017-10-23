@@ -2,7 +2,42 @@ import axios from 'axios';
 
 let initialState = {
   userId: null,
-  itemList:[{itemtype:'Valve'},{itemtype:'Actuator'},{itemtype:'Instrumentation'},{itemtype:'Dust Collector'}]//itemList: []
+  itemList:[
+    {
+      itemtype: 'Valve',
+      media: 'Air',
+      pressure: 230, // meassured in psi
+      temperature: 330.6, // measured in F (unknown if decimal value or not)
+      pipesize: 10.5, // measured in inches, almost certainly will need to be decimal. Measurement is diameter
+      pipesizeadditionalinfo: 'description',
+      additionaliteminfo: 'description'
+    },
+    {
+      itemtype: 'Actuator',
+      valvesize: 33.25, // measured in inches
+      torque: 24, // Not sure of current measurement type
+      valvedescription: 'description',
+      stemdimensions: 'Square', // other options are 'Double D' or 'Other', may need additional info on size
+      returntype: 'Spring', // other option is double acting, may need additional space to include what it uses to return (air, water) and the psi
+      additionaliteminfo: 'description'
+    },
+    {
+      itemtype: 'Dust Collector',
+      temperature: 110, // measured in F
+      particulatetype: ['Metal', 'Wood'], // An array of string values, stored as string with spaces in the database. Space allocated in the database may need to be adjusted
+      particulatesize: 200, // Unknown measuremnt type currently, will likely use decimals
+      additionaliteminfo: 'description'
+    },
+    {
+      itemtype: 'Instrumentation',
+      media: 'Water',
+      pressure: 180, // meassured in psi
+      temperature: 200, // measured in F
+      pipesize: 11.75, // measured in inches
+      pipesizeadditionalinfo: 'description',
+      additionaliteminfo: 'description'
+    }
+  ]//itemList: []
 };
 
 // Action Types:

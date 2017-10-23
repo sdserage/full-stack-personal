@@ -1,0 +1,24 @@
+@import '../../themeController'
+
+.product-inquiry
+
+.inquiry-list
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  .valve
+    margin-top: 20px
+    background: $mediumColor
+    color: $lighterColor
+    padding: 10px 40px 10px 40px
+  .actuator
+    @extend .valve
+
+  .dust-collector
+    @extend .valve
+
+  .instrumentation
+    @extend .valve
+
+.add-item
