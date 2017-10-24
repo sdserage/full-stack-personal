@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {resetItem} from '../../../../ducks/inquiries_reducer';
+import {resetItem, selectItemType} from '../../../../ducks/inquiries_reducer';
 
 class WizardSelectItem extends Component {
 
@@ -10,24 +10,26 @@ class WizardSelectItem extends Component {
   }
 
   render(){
+    const {selectItemType} = this.props;
+
     return(
       <div className="choose-a-type">
         <h2>What type of equipment are you looking for?</h2>
 
-        <Link to='/productinquiry/valve-wizard1'>
-          <div className="wizard-valve">Valve</div>
+        <Link to='/productinquiry/valve-wizard/1'>
+          <div className="valve-wizard" onClick={()=>selectItemType('Valve')}>Valve</div>
         </Link>
 
-        <Link to='/productinquiry/actuator-wizard1'>
-          <div className="wizard-actuator"></div>
+        <Link to='/productinquiry/actuator-wizard/1'>
+          <div className="actuator-wizard">Actuator</div>
         </Link>
 
-        <Link to='/productinquiry/dust-collector-wizard1'>
-          <div className="wizard-dust-collector"></div>
+        <Link to='/productinquiry/dust-collector-wizard/1'>
+          <div className="dust-collector-wizard">Dust Collector</div>
         </Link>
 
-        <Link to='/productinquiry/instrumentation-wizard1'>
-          <div className="wizard-instrumentation"></div>
+        <Link to='/productinquiry/instrumentation-wizard/1'>
+          <div className="instrumentation-wizard">Instrumentation</div>
         </Link>
 
       </div>
@@ -35,4 +37,4 @@ class WizardSelectItem extends Component {
   }
 }
 
-export default connect(null, {resetItem})(WizardSelectItem);
+export default connect(null, {resetItem, selectItemType})(WizardSelectItem);

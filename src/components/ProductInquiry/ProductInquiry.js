@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './ProductInquiry.css';
 import {connect} from 'react-redux';
-import {addInquiryItem, removeInquiryItem, submitInquiry} from '../../ducks/inquiries_reducer';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import {removeInquiryItem} from '../../ducks/inquiries_reducer';
+import {BrowserRouter as Router} from 'react-router-dom';
 // Components
 import InquiryItem from './InquiryItem/InquiryItem';
 import router from './router';
@@ -14,7 +14,6 @@ class ProductInquiry extends Component{
   render(){
     let {itemList} = this.props;
     let mappedItemList = itemList.map( (item,index) =>{
-      //return <li key={index}>{item.itemtype}</li>;
       return (
         <li className="item-box" key={index}>
           <InquiryItem item={item}/>
@@ -30,8 +29,6 @@ class ProductInquiry extends Component{
         <ul className="inquiry-list">
           {mappedItemList}
         </ul>
-        <h2 className="add-item">+ Add Item</h2>
-        <h2 className="submit-inquiry">Submit</h2>
         <div className="item-wizard">
           <Router>
             {router}
