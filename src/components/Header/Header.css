@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
 .header {
   color: white;
-  background-color: #931621; }
+  background-color: #931621;
+  box-shadow: 0px 3px 20px #545E75; }
   .header nav, .header ul {
     display: flex;
     flex-direction: row;

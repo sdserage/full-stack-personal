@@ -5,32 +5,30 @@ import {Link} from 'react-router-dom';
 class Header extends Component{
   render(){
     return(
-      <footer className='footer' style={{color: 'blue'}}>
-        <nav>
-          <ul>
+      <footer className='footer'>
 
-            <Link to='/'>
-              <li>Home</li>
-            </Link>
+        <Link to='/'>
+          <p>Home</p>
+        </Link>
 
-            <Link to='/about'>
-              <li>About</li>
-            </Link>
+        <Link to='/about'>
+          <p>About</p>
+        </Link>
 
-            <Link to='/factoidsandtools'>
-              <li>Factoids And Tools</li>
-            </Link>
+        <Link to='/factoidsandtools'>
+          <p>Factoids And Tools</p>
+        </Link>
 
-            <Link to='/productinquiry'>
-              <li>Product Inquiry</li>
-            </Link>
+        <Link to='/productinquiry'>
+          <p>Product Inquiry</p>
+        </Link>
 
-            <Link to='/contact'>
-              <li>Contact</li>
-            </Link>
+        <Link to='/contact'>
+          <p>Contact</p>
+        </Link>
 
-          </ul>
-        </nav>
+          <p className='design'>Serage Web Design 2017</p>
+
       </footer>
     );
   }

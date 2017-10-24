@@ -10,6 +10,7 @@
   display: grid
   grid-template-columns: 1fr [a] 1fr [b]
   grid-template-rows: auto
+  box-shadow: 0px 10px 15px $darkColor
 
 .product-inquiry
   display: flex
@@ -22,19 +23,19 @@
 
   .valve
     @extend .item-template
-    grid-template-areas: "header header" "media pressure" "temperature pipesize" "pipesize-info pipesize-info" "additional-info additional-info"
+    grid-template-areas: "header header" "item-img item-img" "media pressure" "temperature pipesize" "pipesize-info pipesize-info" "additional-info additional-info"
   .valve > *
     margin-top: 10px
 
   .actuator
     @extend .item-template
-    grid-template-areas: "header header" "valvesize torque" "valve-desc valve-desc" "stemdimensions returntype" "additional-info additional-info"
+    grid-template-areas: "header header" "item-img item-img" "valvesize torque" "valve-desc valve-desc" "stemdimensions returntype" "additional-info additional-info"
   .actuator > *
     margin-top: 10px
 
   .dust-collector
     @extend .item-template
-    grid-template-areas: "header header" "temperature temperature" "particulatetype particulatetype" "particulatesize particulatesize" "additional-info additional-info"
+    grid-template-areas: "header header" "item-img item-img" "particulatetype particulatesize" "temperature temperature" "additional-info additional-info"
   .dust-collector > *
     margin-top: 10px
 
@@ -93,7 +94,44 @@
   text-align: center
   width: 50vw
   margin-top: 20px
+  margin-bottom: 10px
   background: $lightColor
   color: $mediumColor
   padding: 10px 40px 10px 40px
   border-radius: 5px
+  box-shadow: 0px 10px 15px $darkColor
+
+.submit-inquiry
+  @extend .add-item
+  background: $mediumColor
+  color: $lightColor
+
+// may need to be a div with a background image instead
+.item-img
+  grid-area: item-img
+  width: inherit
+  height: 10vw
+
+  border-style: solid
+  border-color: $darkerColor
+  border-width: 1px
+
+// both icons may need to go, they don't look good
+.edit-icon
+  width: 3vw
+  height: 3vw
+  background: $lightColor
+  color: $lightColor
+  margin: 10px 10px 10px 0px
+  border-radius: 5px
+  box-shadow: 0px 10px 15px $darkColor
+
+  background-image: url("pencil.svg")
+  background-size: 6vw
+  background-position: 47% 10%
+
+.delete-icon
+  @extend .edit-icon
+  background-image: url("trash.svg")
+  background-size: 7vw
+  background-position: 41% 11%

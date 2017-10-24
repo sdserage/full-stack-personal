@@ -13,7 +13,13 @@ class ProductInquiry extends Component{
     let {itemList} = this.props;
     let mappedItemList = itemList.map( (item,index) =>{
       //return <li key={index}>{item.itemtype}</li>;
-      return <li key={index}><InquiryItem item={item}/></li>
+      return (
+        <li key={index}>
+          <InquiryItem item={item}/>
+          <div className="edit-icon"></div>
+          <div className="delete-icon"></div>
+        </li>
+      );
     });
     return(
       <div className="product-inquiry">
@@ -21,6 +27,7 @@ class ProductInquiry extends Component{
           {mappedItemList}
         </ul>
         <h2 className="add-item">+ Add Item</h2>
+        <h2 className="submit-inquiry">Submit</h2>
       </div>
     );
   }
