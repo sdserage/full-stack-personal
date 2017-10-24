@@ -1,0 +1,54 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+.media {
+  grid-area: media; }
+
+.pressure {
+  grid-area: pressure; }
+
+.temperature {
+  grid-area: temperature; }
+
+.pipesize {
+  grid-area: pipesize; }
+
+.pipesize-info {
+  grid-area: pipesize-info; }
+
+.additional-info {
+  grid-area: additional-info; }
+
+.valvesize {
+  grid-area: valvesize; }
+
+.torque {
+  grid-area: torque; }
+
+.valve-desc {
+  grid-area: valve-desc; }
+
+.stemdimensions {
+  grid-area: stemdimensions; }
+
+.returntype {
+  grid-area: returntype; }
+
+.particulatetype {
+  grid-area: particulatetype; }
+
+.particulatesize {
+  grid-area: particulatesize; }
+
+.item-header {
+  grid-area: header;
+  font-size: 1.17em;
+  font-weight: 700;
+  text-align: center;
+  color: #545E75; }
+
+.item-img {
+  grid-area: item-img;
+  width: inherit;
+  height: 10vw;
+  border-style: solid;
+  border-color: #03191E;
+  border-width: 1px; }

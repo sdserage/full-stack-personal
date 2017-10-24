@@ -3,7 +3,7 @@ import './ProductInquiry.css';
 import {connect} from 'react-redux';
 import {addInquiryItem, removeInquiryItem, submitInquiry} from '../../ducks/inquiries_reducer';
 // Components
-import InquiryItem from './InquiryItem';
+import InquiryItem from './InquiryItem/InquiryItem';
 
 class ProductInquiry extends Component{
   // constructor(props){
@@ -14,10 +14,12 @@ class ProductInquiry extends Component{
     let mappedItemList = itemList.map( (item,index) =>{
       //return <li key={index}>{item.itemtype}</li>;
       return (
-        <li key={index}>
+        <li className="item-box" key={index}>
           <InquiryItem item={item}/>
-          <div className="edit-icon"></div>
-          <div className="delete-icon"></div>
+          <div className="item-buttons">
+            <div className="edit-icon"></div>
+            <div className="delete-icon"></div>
+          </div>
         </li>
       );
     });
