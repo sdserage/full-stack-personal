@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import './ProductInquiry.css';
 import {connect} from 'react-redux';
 import {addInquiryItem, removeInquiryItem, submitInquiry} from '../../ducks/inquiries_reducer';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 // Components
 import InquiryItem from './InquiryItem/InquiryItem';
+import router from './router';
 
 class ProductInquiry extends Component{
   // constructor(props){
@@ -30,6 +32,11 @@ class ProductInquiry extends Component{
         </ul>
         <h2 className="add-item">+ Add Item</h2>
         <h2 className="submit-inquiry">Submit</h2>
+        <div className="item-wizard">
+          <Router>
+            {router}
+          </Router>
+        </div>
       </div>
     );
   }

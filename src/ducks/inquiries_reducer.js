@@ -2,6 +2,7 @@ import axios from 'axios';
 
 let initialState = {
   userId: null,
+  temporaryItem: {},
   itemList:[
     {
       itemtype: 'Valve',
@@ -45,6 +46,8 @@ let initialState = {
   const ADD_INQUIRY_ITEM = 'ADD_INQUIRY_ITEM';
   const SUBMIT_INQUIRY = 'SUBMIT_INQUIRY';
   const REMOVE_INQUIRY_ITEM = 'REMOVE_INQUIRY_ITEM';
+  const SELECT_ITEM_TYPE = 'SELECT_ITEM_TYPE';
+  const RESET_ITEM = 'RESET_ITEM';
   //const UNDO_REMOVE = 'UNDO_REMOVE';
   // Employee users:
   const DISPLAY_INQUIRIES = 'DISPLAY_INQUIRIES';
@@ -89,6 +92,20 @@ export function submitInquiry(){
   }
 };
 
+export function selectItemType(itemtype){
+  return {
+    type: SELECT_ITEM_TYPE,
+    payload: itemtype
+  }
+};
+
+export function resetItem(){
+  return {
+    type: RESET_ITEM,
+    payload: {}
+  }
+}
+
 export default function inquiries_reducer(state = initialState, action){
   switch(action.type){
     case ADD_INQUIRY_ITEM:
@@ -101,10 +118,16 @@ export default function inquiries_reducer(state = initialState, action){
       return Object.assign({}, state, {itemList: itemList_remove});
     case SUBMIT_INQUIRY + _FULFILLED:
       if(action.payload){
-        return Object.assign({}, state, {itemList: action.payload})
+        return Object.assign({}, state, {itemList: action.payload});
       }else{
         return state;
       }
+    case RESET_ITEM:
+      return Object.assign({}, state, {temporaryItem: action.payload});
+    case SELECT_ITEM_TYPE:
+      let temporaryItem_select_type = Object.assign({}, state.temporaryItem);
+      temporaryItem_select_type.itemtype = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_select_type});
     default:
       return state;
   }

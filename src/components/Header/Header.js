@@ -6,14 +6,14 @@ import {toggleUserMenuOn, toggleUserMenuOff} from '../../ducks/users_reducer';
 
 class Header extends Component{
 
-  constructor(props){
-    super(props);
-    this.toggleUserMenu = this.toggleUserMenu.bind(this);
-  }
-
-  toggleUserMenu(){
-    alert('test');
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.toggleUserMenu = this.toggleUserMenu.bind(this);
+  // }
+  //
+  // toggleUserMenu(){
+  //   alert('test');
+  // }
 
   render(){
     let user = this.props.user;
