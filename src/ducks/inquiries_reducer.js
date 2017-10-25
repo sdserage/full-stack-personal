@@ -48,6 +48,8 @@ let initialState = {
   const REMOVE_INQUIRY_ITEM = 'REMOVE_INQUIRY_ITEM';
   const SELECT_ITEM_TYPE = 'SELECT_ITEM_TYPE';
   const RESET_ITEM = 'RESET_ITEM';
+  const SELECT_MEDIA = 'SELECT_MEDIA';
+  const SET_TEMPERATURE = 'SET_TEMPERATURE';
   //const UNDO_REMOVE = 'UNDO_REMOVE';
   // Employee users:
   const DISPLAY_INQUIRIES = 'DISPLAY_INQUIRIES';
@@ -104,7 +106,21 @@ export function resetItem(){
     type: RESET_ITEM,
     payload: {}
   }
+};
+
+export function selectMedia(media){
+  return {
+    type: SELECT_MEDIA,
+    payload: media
+  }
 }
+
+export function setTemperature(temperature){
+  return {
+    type: SET_TEMPERATURE,
+    payload: temperature
+  }
+};
 
 export default function inquiries_reducer(state = initialState, action){
   switch(action.type){
@@ -128,6 +144,10 @@ export default function inquiries_reducer(state = initialState, action){
       let temporaryItem_select_type = Object.assign({}, state.temporaryItem);
       temporaryItem_select_type.itemtype = action.payload;
       return Object.assign({}, state, {temporaryItem: temporaryItem_select_type});
+    case SELECT_MEDIA:
+      let temporaryItem_select_media = Object.assign({}, state.temporaryItem);
+      temporaryItem_select_media.media = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_select_media});
     default:
       return state;
   }
