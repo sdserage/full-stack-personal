@@ -14,6 +14,7 @@ class Step1 extends Component {
   inputSelect(value){
     if(value === 'Other'){
       this.setState({otherSelected: true});
+      this.props.selectMedia("");
     }else{
       this.setState({otherSelected: false});
       this.props.selectMedia(value);
@@ -26,26 +27,33 @@ class Step1 extends Component {
 
   render(){
     let {otherSelected} = this.state;
+    const {media} = this.props || "";
+    const {nextPath} = this.props;
     return(
       <div>
         <h3>What is your process?</h3>
         <select onChange={(e) => this.inputSelect(e.target.value)}>
-          <option value="" disabled hidden>Select</option>
-          <option value="Water"></option>
-          <option value="Steam"></option>
-          <option value="Air"></option>
+          <option value="" selected disabled hidden>{media ? media : 'Select'}</option>
+          <option value="Water">Water</option>
+          <option value="Steam">Steam</option>
+          <option value="Air">Air</option>
           <option value="Other">Other</option>
         </select>
-        {otherSelected ? <input onChange={(e)=>this.otherInput(e.target.value)} type='text'/> : null}
+        {otherSelected && <input onChange={(e)=>this.otherInput(e.target.value)} type='text'/>}
+        {
+          media &&
+            <Link to={nextPath}>
+              <div>Next</div>
+            </Link>
+        }
       </div>
     );
   }
 }
 
 function mapStateToProps(state){
-  console.log(state.inquiries.temporaryItem);
   return {
-    temporaryItem: state.inquiries.temporaryItem
+    media: state.inquiries.temporaryItem.media || ""
   };
 }
 

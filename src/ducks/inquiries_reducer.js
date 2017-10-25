@@ -1,63 +1,60 @@
 import axios from 'axios';
 
-let initialState = {
-  userId: null,
-  temporaryItem: {},
-  itemList:[
-    {
-      itemtype: 'Valve',
-      media: 'Air',
-      pressure: 230, // meassured in psi
-      temperature: 330.6, // measured in F (unknown if decimal value or not)
-      pipesize: 10.5, // measured in inches, almost certainly will need to be decimal. Measurement is diameter
-      pipesizeadditionalinfo: 'description',
-      additionaliteminfo: 'description'
-    },
-    {
-      itemtype: 'Actuator',
-      valvesize: 33.25, // measured in inches
-      torque: 24, // Not sure of current measurement type
-      valvedescription: 'description',
-      stemdimensions: 'Square', // other options are 'Double D' or 'Other', may need additional info on size
-      returntype: 'Spring', // other option is double acting, may need additional space to include what it uses to return (air, water) and the psi
-      additionaliteminfo: 'description'
-    },
-    {
-      itemtype: 'Dust Collector',
-      temperature: 110, // measured in F
-      particulatetype: ['Metal', 'Wood'], // An array of string values, stored as string with spaces in the database. Space allocated in the database may need to be adjusted
-      particulatesize: 200, // Unknown measuremnt type currently, will likely use decimals
-      additionaliteminfo: 'description'
-    },
-    {
-      itemtype: 'Instrumentation',
-      media: 'Water',
-      pressure: 180, // meassured in psi
-      temperature: 200, // measured in F
-      pipesize: 11.75, // measured in inches
-      pipesizeadditionalinfo: 'description',
-      additionaliteminfo: 'description'
-    }
-  ]//itemList: []
-};
-
-// Action Types:
-  // Standard users:
-  const ADD_INQUIRY_ITEM = 'ADD_INQUIRY_ITEM';
-  const SUBMIT_INQUIRY = 'SUBMIT_INQUIRY';
-  const REMOVE_INQUIRY_ITEM = 'REMOVE_INQUIRY_ITEM';
-  const SELECT_ITEM_TYPE = 'SELECT_ITEM_TYPE';
-  const RESET_ITEM = 'RESET_ITEM';
-  const SELECT_MEDIA = 'SELECT_MEDIA';
-  const SET_TEMPERATURE = 'SET_TEMPERATURE';
-  //const UNDO_REMOVE = 'UNDO_REMOVE';
-  // Employee users:
-  const DISPLAY_INQUIRIES = 'DISPLAY_INQUIRIES';
-  const DISPLAY_INQUIRY_ITEMS = 'DISPLAY_INQUIRY_ITEMS';
-  // Admin users:
-  //const DELETE_INQUIRY = 'DELETE_INQUIRY';
-// Axios:
-const _FULFILLED = '_FULFILLED';
+const _FULFILLED = '_FULFILLED' // axios
+    // Standard users
+    , ADD_INQUIRY_ITEM = 'ADD_INQUIRY_ITEM'
+    , SUBMIT_INQUIRY = 'SUBMIT_INQUIRY'
+    , REMOVE_INQUIRY_ITEM = 'REMOVE_INQUIRY_ITEM'
+    , SELECT_ITEM_TYPE = 'SELECT_ITEM_TYPE'
+    , RESET_ITEM = 'RESET_ITEM'
+    , SELECT_MEDIA = 'SELECT_MEDIA'
+    , SET_TEMPERATURE = 'SET_TEMPERATURE'
+    //, UNDO_REMOVE = 'UNDO_REMOVE'
+    // Employee users:
+    , DISPLAY_INQUIRIES = 'DISPLAY_INQUIRIES'
+    , DISPLAY_INQUIRY_ITEMS = 'DISPLAY_INQUIRY_ITEMS'
+    // Admin users:
+    //, DELETE_INQUIRY = 'DELETE_INQUIRY'
+    , initialState = {
+        userId: null,
+        temporaryItem: {},
+        itemList:[
+          {
+            itemtype: 'Valve',
+            media: 'Air',
+            pressure: 230, // meassured in psi
+            temperature: 330.6, // measured in F (unknown if decimal value or not)
+            pipesize: 10.5, // measured in inches, almost certainly will need to be decimal. Measurement is diameter
+            pipesizeadditionalinfo: 'description',
+            additionaliteminfo: 'description'
+          },
+          {
+            itemtype: 'Actuator',
+            valvesize: 33.25, // measured in inches
+            torque: 24, // Not sure of current measurement type
+            valvedescription: 'description',
+            stemdimensions: 'Square', // other options are 'Double D' or 'Other', may need additional info on size
+            returntype: 'Spring', // other option is double acting, may need additional space to include what it uses to return (air, water) and the psi
+            additionaliteminfo: 'description'
+          },
+          {
+            itemtype: 'Dust Collector',
+            temperature: 110, // measured in F
+            particulatetype: ['Metal', 'Wood'], // An array of string values, stored as string with spaces in the database. Space allocated in the database may need to be adjusted
+            particulatesize: 200, // Unknown measuremnt type currently, will likely use decimals
+            additionaliteminfo: 'description'
+          },
+          {
+            itemtype: 'Instrumentation',
+            media: 'Water',
+            pressure: 180, // meassured in psi
+            temperature: 200, // measured in F
+            pipesize: 11.75, // measured in inches
+            pipesizeadditionalinfo: 'description',
+            additionaliteminfo: 'description'
+          }
+        ]//itemList: []
+    };
 
 export function addInquiryItem(newInquiryItem){
   return {
@@ -148,6 +145,10 @@ export default function inquiries_reducer(state = initialState, action){
       let temporaryItem_select_media = Object.assign({}, state.temporaryItem);
       temporaryItem_select_media.media = action.payload;
       return Object.assign({}, state, {temporaryItem: temporaryItem_select_media});
+    case SET_TEMPERATURE:
+      let temporaryItem_set_temp = Object.assign({}, state.temporaryItem);
+      temporaryItem_set_temp.temperature = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_set_temp});
     default:
       return state;
   }
