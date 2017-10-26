@@ -61,10 +61,8 @@ class Step2 extends Component {
   }
 
   render(){
-    const {celsiusMode, celsiusTemp} = this.state;
+    const {celsiusMode, localTemperature} = this.state;
     const {media, temperature, previousPath, nextPath, setTemperature} = this.props;
-    console.log(temperature);
-    console.log(this.state.localTemperature);
     return(
       <div>
         <Link to={previousPath}>
@@ -75,15 +73,15 @@ class Step2 extends Component {
           <div onClick={()=>this.toggleMode(false)} className="fahrenheit" style={celsiusMode ? {color: 'black'} : {color: 'red'}}>&#8457;</div>
           <div onClick={()=>this.toggleMode(true)} className="celsius"style={celsiusMode ? {color: 'red'} : {color: 'black'}}>&#8451;</div>
         </div>
-          {
-            <div style={{display: 'flex'}}>
-              <input type="number"
-               value={this.state.localTemperature}
-               onChange={(e) => this.updateTemperatureValue(Number(e.target.value))}
-              />
-              {celsiusMode ? <p>&#8451;</p> : <p>&#8457;</p>}
-            </div>
-          }
+        {
+          <div style={{display: 'flex'}}>
+            <input type="number"
+             value={localTemperature}
+             onChange={(e) => this.updateTemperatureValue(Number(e.target.value))}
+            />
+            {celsiusMode ? <p>&#8451;</p> : <p>&#8457;</p>}
+          </div>
+        }
         {
           typeof temperature === 'number' &&
             <Link to={nextPath}>

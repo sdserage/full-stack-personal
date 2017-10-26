@@ -9,6 +9,7 @@ const _FULFILLED = '_FULFILLED' // axios
     , RESET_ITEM = 'RESET_ITEM'
     , SELECT_MEDIA = 'SELECT_MEDIA'
     , SET_TEMPERATURE = 'SET_TEMPERATURE'
+    , SET_PRESSURE = 'SET_PRESSURE'
     //, UNDO_REMOVE = 'UNDO_REMOVE'
     // Employee users:
     , DISPLAY_INQUIRIES = 'DISPLAY_INQUIRIES'
@@ -119,6 +120,13 @@ export function setTemperature(temperature){
   }
 };
 
+export function setPressure(pressure){
+  return {
+    type: SET_PRESSURE,
+    payload: pressure
+  }
+}
+
 export default function inquiries_reducer(state = initialState, action){
   switch(action.type){
     case ADD_INQUIRY_ITEM:
@@ -149,6 +157,10 @@ export default function inquiries_reducer(state = initialState, action){
       let temporaryItem_set_temp = Object.assign({}, state.temporaryItem);
       temporaryItem_set_temp.temperature = action.payload;
       return Object.assign({}, state, {temporaryItem: temporaryItem_set_temp});
+    case SET_PRESSURE:
+      let temporaryItem_set_pressure = Object.assign({}, state.temporaryItem);
+      temporaryItem_set_pressure.pressure = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_set_pressure});
     default:
       return state;
   }
