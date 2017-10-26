@@ -20,7 +20,6 @@ const _FULFILLED = '_FULFILLED' // axios
     // Admin users:
     //, DELETE_INQUIRY = 'DELETE_INQUIRY'
     , initialState = {
-        userId: null,
         temporaryItem: {},
         itemList:[
           {
@@ -74,8 +73,8 @@ export function removeInquiryItem(index){
   };
 }
 
-export function submitInquiry(){
-  let responseValue = axios.post('/api/inquiries')
+export function submitInquiry(inquiry){
+  let responseValue = axios.post('/api/inquiries', inquiry)
     .then(res => {
       return res.data;
     })
