@@ -91,7 +91,7 @@ class Step4 extends Component {
         }
         <h3>Any additional information about the pipe you would like to tell us?</h3>
         <h4>e.g., What material is the pipe made of?</h4>
-        <textarea rows="5" cols="50" onChange={(e)=>setPipeSizeAdditionalInfo(e.target.value)}></textarea>
+        <textarea value={pipesizeadditionalinfo} rows="5" cols="50" onChange={(e)=>setPipeSizeAdditionalInfo(e.target.value)}></textarea>
         {
           typeof pipesize === 'number' &&
             <Link to={nextPath}>
