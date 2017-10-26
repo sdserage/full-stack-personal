@@ -10,6 +10,8 @@ const _FULFILLED = '_FULFILLED' // axios
     , SELECT_MEDIA = 'SELECT_MEDIA'
     , SET_TEMPERATURE = 'SET_TEMPERATURE'
     , SET_PRESSURE = 'SET_PRESSURE'
+    , SET_PIPE_SIZE = 'SET_PIPE_SIZE'
+    , SET_PIPE_SIZE_ADDITIONAL_INFO = 'SET_PIPE_SIZE_ADDITIONAL_INFO'
     //, UNDO_REMOVE = 'UNDO_REMOVE'
     // Employee users:
     , DISPLAY_INQUIRIES = 'DISPLAY_INQUIRIES'
@@ -127,6 +129,20 @@ export function setPressure(pressure){
   }
 }
 
+export function setPipeSize(pipesize){
+  return {
+    type: SET_PIPE_SIZE,
+    payload: pipesize
+  }
+}
+
+export function setPipeSizeAdditionalInfo(pipesizeadditionalinfo){
+  return {
+    type: SET_PIPE_SIZE_ADDITIONAL_INFO,
+    payload: pipesizeadditionalinfo
+  }
+};
+
 export default function inquiries_reducer(state = initialState, action){
   switch(action.type){
     case ADD_INQUIRY_ITEM:
@@ -161,6 +177,14 @@ export default function inquiries_reducer(state = initialState, action){
       let temporaryItem_set_pressure = Object.assign({}, state.temporaryItem);
       temporaryItem_set_pressure.pressure = action.payload;
       return Object.assign({}, state, {temporaryItem: temporaryItem_set_pressure});
+    case SET_PIPE_SIZE:
+      let temporaryItem_set_pipe_size = Object.assign({}, state.temporaryItem);
+      temporaryItem_set_pipe_size.pipesize = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_set_pipe_size});
+    case SET_PIPE_SIZE_ADDITIONAL_INFO:
+      let temporaryItem_set_pipe_size_additional_info = Object.assign({}, state.temporaryItem);
+      temporaryItem_set_pipe_size_additional_info.pipesizeadditionalinfo = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_set_pipe_size_additional_info});
     default:
       return state;
   }
