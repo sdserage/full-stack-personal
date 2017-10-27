@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {setValveSize, setValveDescription} from '../../../../../ducks/inquiries_reducer'
+import {setValveSize} from '../../../../../ducks/inquiries_reducer'
 
 class Step1 extends Component {
   constructor(props){
@@ -61,7 +61,7 @@ class Step1 extends Component {
   }
 
   render(){
-    const {nextPath, valvesize, setValveDescription, valvedescription} = this.props;
+    const {nextPath, valvesize} = this.props;
     const {localValveSize, mmMode} = this.state;
     return(
       <div>
@@ -78,9 +78,6 @@ class Step1 extends Component {
           />
           {mmMode ? <p>mm</p> : <p>inch</p>}
         </div>
-        <h3>Any additional information about the valve you would like to tell us?</h3>
-        <h4>e.g., ?</h4>
-        <textarea value={valvedescription} rows="5" cols="50" onChange={(e)=>setValveDescription(e.target.value)}></textarea>
         {
           typeof valvesize === 'number' &&
             <Link to={nextPath}>
@@ -95,9 +92,8 @@ class Step1 extends Component {
 function mapStateToProps(state){
   const {temporaryItem} = state.inquiries
   return{
-    valvesize: temporaryItem.valvesize,
-    valvedescription: temporaryItem.valvedescription
+    valvesize: temporaryItem.valvesize
   }
 }
 
-export default connect(mapStateToProps, {setValveSize, setValveDescription})(Step1);
+export default connect(mapStateToProps, {setValveSize})(Step1);
