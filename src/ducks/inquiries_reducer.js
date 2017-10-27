@@ -12,6 +12,7 @@ const _FULFILLED = '_FULFILLED' // axios
     , SET_PRESSURE = 'SET_PRESSURE'
     , SET_PIPE_SIZE = 'SET_PIPE_SIZE'
     , SET_PIPE_SIZE_ADDITIONAL_INFO = 'SET_PIPE_SIZE_ADDITIONAL_INFO'
+    , SET_VALVE_SIZE = 'SET_VALVE_SIZE'
     , SET_ADDITIONAL_ITEM_INFO = 'SET_ADDITIONAL_ITEM_INFO'
     //, UNDO_REMOVE = 'UNDO_REMOVE'
     // Employee users:
@@ -143,6 +144,13 @@ export function setPipeSizeAdditionalInfo(pipesizeadditionalinfo){
   }
 };
 
+export function setValveSize(valvesize){
+  return {
+    type: SET_VALVE_SIZE,
+    payload: valvesize
+  }
+};
+
 export function setAdditionalItemInfo(additionaliteminfo){
   return {
     type: SET_ADDITIONAL_ITEM_INFO,
@@ -192,6 +200,10 @@ export default function inquiries_reducer(state = initialState, action){
       let temporaryItem_set_pipe_size_additional_info = Object.assign({}, state.temporaryItem);
       temporaryItem_set_pipe_size_additional_info.pipesizeadditionalinfo = action.payload;
       return Object.assign({}, state, {temporaryItem: temporaryItem_set_pipe_size_additional_info});
+    case SET_VALVE_SIZE:
+      let temporaryItem_set_valve_size = Object.assign({}, state.temporaryItem);
+      temporaryItem_set_valve_size.valvesize = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_set_valve_size});
     case SET_ADDITIONAL_ITEM_INFO:
       let temporaryItem_set_additional_item_info = Object.assign({}, state.temporaryItem);
       temporaryItem_set_additional_item_info.additionaliteminfo = action.payload;
