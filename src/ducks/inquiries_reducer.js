@@ -15,6 +15,7 @@ const _FULFILLED = '_FULFILLED' // axios
     , SET_VALVE_SIZE = 'SET_VALVE_SIZE'
     , SET_TORQUE = 'SET_TORQUE'
     , SET_VALVE_DESCRIPTION = 'SET_VALVE_DESCRIPTION'
+    , SET_STEM_DIMENSIONS = 'SET_STEM_DIMENSIONS'
     , SET_ADDITIONAL_ITEM_INFO = 'SET_ADDITIONAL_ITEM_INFO'
     //, UNDO_REMOVE = 'UNDO_REMOVE'
     // Employee users:
@@ -167,6 +168,13 @@ export function setValveDescription(valvedescription){
   }
 };
 
+export function setStemDimensions(stemdimensions){
+  return {
+    type: SET_STEM_DIMENSIONS,
+    payload: stemdimensions
+  }
+};
+
 export function setAdditionalItemInfo(additionaliteminfo){
   return {
     type: SET_ADDITIONAL_ITEM_INFO,
@@ -228,6 +236,10 @@ export default function inquiries_reducer(state = initialState, action){
       let temporaryItem_set_valve_description = Object.assign({}, state.temporaryItem);
       temporaryItem_set_valve_description.valvedescription = action.payload;
       return Object.assign({}, state, {temporaryItem: temporaryItem_set_valve_description});
+    case SET_STEM_DIMENSIONS:
+      let temporaryItem_set_stem_dimensions = Object.assign({}, state.temporaryItem);
+      temporaryItem_set_stem_dimensions.stemdimensions = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_set_stem_dimensions});
     case SET_ADDITIONAL_ITEM_INFO:
       let temporaryItem_set_additional_item_info = Object.assign({}, state.temporaryItem);
       temporaryItem_set_additional_item_info.additionaliteminfo = action.payload;
