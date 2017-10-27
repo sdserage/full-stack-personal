@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {selectMedia} from '../../../../../ducks/inquiries_reducer'
 
-class Step2 extends Component {
+class Step5 extends Component {
   render(){
     return(
       <div>
@@ -12,4 +12,4 @@ class Step2 extends Component {
   }
 }
 
-export default connect(null)(Step2);
+export default connect(null)(Step5);
