@@ -44,13 +44,13 @@ const _FULFILLED = '_FULFILLED' // axios
             itemtype: 'Dust Collector',
             temperature: 110, // measured in F
             particulatetype: ['Metal', 'Wood'], // An array of string values, stored as string with spaces in the database. Space allocated in the database may need to be adjusted
-            particulatesize: 200, // Unknown measuremnt type currently, will likely use decimals
+            particulatesize: 200, // measured in micrometers ('micro symbol''m'), also known as (incorrectly since it is an outdated term no longer considered valid) 'microns'.
             additionaliteminfo: 'description'
           },
           {
             itemtype: 'Instrumentation',
             media: 'Water',
-            pressure: 180, // meassured in psi
+            pressure: 180, // measured in psi
             temperature: 200, // measured in F
             pipesize: 11.75, // measured in inches
             pipesizeadditionalinfo: 'description',
