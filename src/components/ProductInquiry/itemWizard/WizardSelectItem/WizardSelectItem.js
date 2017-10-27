@@ -21,15 +21,15 @@ class WizardSelectItem extends Component {
         </Link>
 
         <Link to='/productinquiry/actuator-wizard/1'>
-          <div className="actuator-wizard">Actuator</div>
+          <div className="actuator-wizard" onClick={()=>selectItemType('Actuator')}>Actuator</div>
         </Link>
 
         <Link to='/productinquiry/dust-collector-wizard/1'>
-          <div className="dust-collector-wizard">Dust Collector</div>
+          <div className="dust-collector-wizard" onClick={()=>selectItemType('Dust Collector')}>Dust Collector</div>
         </Link>
 
         <Link to='/productinquiry/instrumentation-wizard/1'>
-          <div className="instrumentation-wizard">Instrumentation</div>
+          <div className="instrumentation-wizard" onClick={()=>selectItemType('Instrumentation')}>Instrumentation</div>
         </Link>
 
       </div>
