@@ -17,6 +17,8 @@ const _FULFILLED = '_FULFILLED' // axios
     , SET_VALVE_DESCRIPTION = 'SET_VALVE_DESCRIPTION'
     , SET_STEM_DIMENSIONS = 'SET_STEM_DIMENSIONS'
     , SET_RETURN_TYPE = 'SET_RETURN_TYPE'
+    , SET_PARTICULATE_TYPE = 'SET_PARTICULATE_TYPE'
+    , SET_PARTICULATE_SIZE = 'SET_PARTICULATE_SIZE'
     , SET_ADDITIONAL_ITEM_INFO = 'SET_ADDITIONAL_ITEM_INFO'
     //, UNDO_REMOVE = 'UNDO_REMOVE'
     // Employee users:
@@ -183,6 +185,20 @@ export function setReturnType(returntype){
   }
 };
 
+export function setParticulateType(particulatetype){
+  return {
+    type: SET_PARTICULATE_TYPE,
+    payload: particulatetype
+  }
+};
+
+export function setParticulateSize(particulatesize){
+  return {
+    type: SET_PARTICULATE_SIZE,
+    payload: particulatesize
+  }
+};
+
 export function setAdditionalItemInfo(additionaliteminfo){
   return {
     type: SET_ADDITIONAL_ITEM_INFO,
@@ -252,6 +268,14 @@ export default function inquiries_reducer(state = initialState, action){
       let temporaryItem_set_return_type = Object.assign({}, state.temporaryItem);
       temporaryItem_set_return_type.returntype = action.payload;
       return Object.assign({}, state, {temporaryItem: temporaryItem_set_return_type});
+    case SET_PARTICULATE_TYPE:
+      let temporaryItem_set_particulate_type = Object.assign({}, state.temporaryItem);
+      temporaryItem_set_particulate_type.particulatetype = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_set_particulate_type});
+    case SET_PARTICULATE_SIZE:
+      let temporaryItem_set_particulate_size = Object.assign({}, state.temporaryItem);
+      temporaryItem_set_particulate_size.particulatesize = action.payload;
+      return Object.assign({}, state, {temporaryItem: temporaryItem_set_particulate_size});
     case SET_ADDITIONAL_ITEM_INFO:
       let temporaryItem_set_additional_item_info = Object.assign({}, state.temporaryItem);
       temporaryItem_set_additional_item_info.additionaliteminfo = action.payload;
