@@ -4,11 +4,13 @@ import {connect} from 'react-redux';
 // Component
 import router from './router';
 
-export default (
-  <div>
-    <Link to="/productinquiry/select-type">
-      <h2>Type: Dust Collector</h2>
-    </Link>
-    {router}
-  </div>
-);
+export default function DustCollectorWizard(){
+  return (
+    <div>
+      <Link to="/productinquiry/select-type">
+        <h2>Type: Dust Collector</h2>
+      </Link>
+      {router}
+    </div>
+  )
+}

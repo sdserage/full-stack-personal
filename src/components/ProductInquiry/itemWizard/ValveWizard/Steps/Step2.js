@@ -94,7 +94,6 @@ class Step2 extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.inquiries.temporaryItem);
   return {
     media: state.inquiries.temporaryItem.media || "Water", // default value for testing, should ultimately be removed
     temperature: state.inquiries.temporaryItem.temperature
