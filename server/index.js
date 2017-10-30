@@ -1,11 +1,12 @@
 require('dotenv').config();
-const express       = require('express')
-    , session       = require('express-session')
-    , bodyParser    = require('body-parser')
-    , massive       = require('massive')
-    , passport      = require('passport')
-    , Auth0Strategy = require('passport-auth0')
-    , cors          = require('cors');
+const express            = require('express')
+    , session            = require('express-session')
+    , bodyParser         = require('body-parser')
+    , massive            = require('massive')
+    , passport           = require('passport')
+    , Auth0Strategy      = require('passport-auth0')
+    , cors               = require('cors')
+    , inquiry_controller = require('./controllers/inquiry_controller.js');
 
 // Create express app
 const app = express();
@@ -92,6 +93,11 @@ app.get('/auth/logout', (req, res)=>{
   req.logOut();
   res.redirect(302, 'http://localhost:3000');
 });
+
+// inquiries
+app.get('/api/inquiries', inquiry_controller.getInquiries);
+app.post('/api/inquiries', inquiry_controller.createInquiry);
+app.get('/api/inquiries/inquiryitems', inquiry_controller.getInquiryItems);
 
 // Test Endpoints
 app.get('/success', (req, res)=>{
