@@ -1,0 +1,31 @@
+@import '../../themeController'
+
+.view-inquiries
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.inquiry-container
+  color: $darkerColor
+  position: relative
+  border-radius: 5px
+  background: $lightColor
+  width: 50vw
+  margin-top: 20px
+  padding: 10px
+  box-shadow: 0px 10px 15px $darkColor
+
+.inquiry-info
+  display: none
+
+.inquiry-container:hover .inquiry-info
+  padding: 10px
+  border-radius: 5px
+  display: block
+  position: absolute
+  top: 0
+  left: -1.5vw
+  width: 55vw
+  background: $mediumColor
+  color: $lighterColor
+  box-shadow: 0px 10px 15px $darkColor

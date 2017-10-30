@@ -65,25 +65,31 @@ class Step1 extends Component {
     const {localValveSize, mmMode} = this.state;
     return(
       <div>
-        <h3>What is the valve diameter of your process?</h3>
-        <div>
-          <div onClick={()=>this.toggleMode(false)} className="inch" style={mmMode ? {color: 'black'} : {color: 'red'}}>NPS (inch)</div>
-          <div onClick={()=>this.toggleMode(true)} className="mm"style={mmMode ? {color: 'red'} : {color: 'black'}}>DN (mm)</div>
+        <div className="wizard-background"></div>
+        <Link to="/productinquiry">
+          <div className="cancel">Cancel</div>
+        </Link>
+        <div className='wizard-menu'>
+          <h3>What is the valve diameter of your process?</h3>
+          <div>
+            <div onClick={()=>this.toggleMode(false)} className="inch" style={mmMode ? {color: 'black'} : {color: 'red'}}>NPS (inch)</div>
+            <div onClick={()=>this.toggleMode(true)} className="mm"style={mmMode ? {color: 'red'} : {color: 'black'}}>DN (mm)</div>
+          </div>
+          <div style={{display: 'flex'}}>
+            {mmMode ? <p>DN</p> : <p>NPS</p>}
+            <input type="number"
+             value={localValveSize}
+             onChange={(e) => this.updateValveSizeValue(Number(e.target.value))}
+            />
+            {mmMode ? <p>mm</p> : <p>inch</p>}
+          </div>
+          {
+            typeof valvesize === 'number' &&
+              <Link to={nextPath}>
+                <div className="next">Next</div>
+              </Link>
+          }
         </div>
-        <div style={{display: 'flex'}}>
-          {mmMode ? <p>DN</p> : <p>NPS</p>}
-          <input type="number"
-           value={localValveSize}
-           onChange={(e) => this.updateValveSizeValue(Number(e.target.value))}
-          />
-          {mmMode ? <p>mm</p> : <p>inch</p>}
-        </div>
-        {
-          typeof valvesize === 'number' &&
-            <Link to={nextPath}>
-              <div>Next</div>
-            </Link>
-        }
       </div>
     )
   }

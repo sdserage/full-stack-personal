@@ -41,40 +41,46 @@ class Step4 extends Component {
       valvedescriptionAbbreviated += "...";
     }
     return (
-      <div>
-        <Link to={step1}>
-          <div>Valve Size: NPS {valvesize} inch</div>
-        </Link>
-        <Link to={step2}>
-          {
-            typeof torque === 'number' ?
-              <div>Torque: {torque} in-lb</div>
-            :
-              <div>Valve Info: {
-                valvedescriptionAbbreviated.length < valvedescription.length ?
-                  valvedescriptionAbbreviated
-                :
-                  valvedescription
-              }</div>
-          }
-        </Link>
-        <Link to={step3}>
-          <div>Stem Type: {stemdimensions}</div>
-        </Link>
-        <h3>What return type does your valve use?</h3>
-        <h4>Note: Please include the media used for the return if 'Double Acting' is selected.</h4>
-        <select onChange={(e) => this.inputSelect(e.target.value)}>
-          <option value="" selected disabled hidden>{returntype ? returntype : 'Select'}</option>
-          <option value="Spring">Spring</option>
-          <option value="Double Acting">Double Acting</option>
-        </select>
-        {doubleActingSelected && <input onChange={(e)=>this.doubleActingInput(e.target.value)} type='text'/>}
-        {
-          returntype &&
-            <Link to={nextPath}>
-              <div>Next</div>
+          <div>
+          <div className="wizard-background"></div>
+            <Link to="/productinquiry">
+              <div className="cancel">Cancel</div>
             </Link>
-        }
+            <div className='wizard-menu'>
+            <Link to={step1}>
+              <div className="previous">Valve Size: NPS {valvesize} inch</div>
+            </Link>
+            <Link to={step2}>
+              {
+                typeof torque === 'number' ?
+                  <div className="previous">Torque: {torque} in-lb</div>
+                :
+                  <div className="previous">Valve Info: {
+                    valvedescriptionAbbreviated.length < valvedescription.length ?
+                      valvedescriptionAbbreviated
+                    :
+                      valvedescription
+                  }</div>
+              }
+            </Link>
+            <Link to={step3}>
+              <div className="previous">Stem Type: {stemdimensions}</div>
+            </Link>
+            <h3>What return type does your valve use?</h3>
+            <h4>Note: Please include the media used for the return if 'Double Acting' is selected.</h4>
+            <select onChange={(e) => this.inputSelect(e.target.value)}>
+              <option value="" selected disabled hidden>{returntype ? returntype : 'Select'}</option>
+              <option value="Spring">Spring</option>
+              <option value="Double Acting">Double Acting</option>
+            </select>
+            {doubleActingSelected && <input onChange={(e)=>this.doubleActingInput(e.target.value)} type='text'/>}
+            {
+              returntype &&
+                <Link to={nextPath}>
+                  <div className='next'>Next</div>
+                </Link>
+            }
+        </div>
       </div>
     )
   }

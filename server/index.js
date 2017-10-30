@@ -97,7 +97,7 @@ app.get('/auth/logout', (req, res)=>{
 // inquiries
 app.get('/api/inquiries', inquiry_controller.getInquiries);
 app.post('/api/inquiries', inquiry_controller.createInquiry);
-app.get('/api/inquiries/inquiryitems', inquiry_controller.getInquiryItems);
+app.get('/api/inquiries/inquiryitems/:inquiryid', inquiry_controller.getInquiryItems);
 
 // Test Endpoints
 app.get('/success', (req, res)=>{

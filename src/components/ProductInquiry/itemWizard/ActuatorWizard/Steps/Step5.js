@@ -23,15 +23,20 @@ class Step5 extends Component {
     }
     return(
       <div>
+        <div className="wizard-background"></div>
+          <Link to="/productinquiry">
+            <div className="cancel">Cancel</div>
+          </Link>
+          <div className='wizard-menu'>
         <Link to={step1}>
-          <div>Valve Size: NPS {valvesize} inch</div>
+          <div className='previous'>Valve Size: NPS {valvesize} inch</div>
         </Link>
         <Link to={step2}>
           {
             typeof torque === 'number' ?
-              <div>Torque: {torque} in-lb</div>
+              <div className='previous'>Torque: {torque} in-lb</div>
             :
-              <div>Valve Info: {
+              <div className='previous'>Valve Info: {
                 valvedescriptionAbbreviated.length < valvedescription.length ?
                   valvedescriptionAbbreviated
                 :
@@ -40,10 +45,10 @@ class Step5 extends Component {
           }
         </Link>
         <Link to={step3}>
-          <div>Stem Type: {stemdimensions}</div>
+          <div className='previous'>Stem Type: {stemdimensions}</div>
         </Link>
         <Link to={step4}>
-          <div>Return Type: {returntype}</div>
+          <div className='previous'>Return Type: {returntype}</div>
         </Link>
         <h3>Please let us know below if there is any additional information you would like us to know.</h3>
         <h2>The more information we have on your inquiry the more quickly we can find the best equipment!</h2>
@@ -54,10 +59,11 @@ class Step5 extends Component {
           stemdimensions &&
           returntype &&
             <Link to="/productinquiry/">
-              <div onClick={this.completeInquiryItem} className="complete-inquiry-item">Complete</div>
+              <div onClick={this.completeInquiryItem} className="complete-inquiry-item next">Complete</div>
             </Link>
         }
       </div>
+    </div>
     );
   }
 }

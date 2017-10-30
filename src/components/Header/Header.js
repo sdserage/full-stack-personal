@@ -26,7 +26,7 @@ class Header extends Component{
       <header className='header'>
         <nav>
 
-          <img src='' alt='Logo'/>
+          <img src={require('../../amsbeta.svg')} alt='Logo'/>
 
           <ul>
 

@@ -35,15 +35,20 @@ class Step3 extends Component {
     }
     return (
       <div>
+      <div className="wizard-background"></div>
+      <Link to="/productinquiry">
+        <div className="cancel">Cancel</div>
+      </Link>
+      <div className='wizard-menu'>
         <Link to={step1}>
-          <div>Valve Size: NPS {valvesize} inch</div>
+          <div className="previous">Valve Size: NPS {valvesize} inch</div>
         </Link>
         <Link to={step2}>
           {
             typeof torque === 'number' ?
-              <div>Torque: {torque} in-lb</div>
+              <div className="previous">Torque: {torque} in-lb</div>
             :
-              <div>Valve Info: {
+              <div className="previous">Valve Info: {
                 valvedescriptionAbbreviated.length < valvedescription.length ?
                   valvedescriptionAbbreviated
                 :
@@ -62,9 +67,10 @@ class Step3 extends Component {
         {
           stemdimensions &&
             <Link to={nextPath}>
-              <div>Next</div>
+              <div className="next">Next</div>
             </Link>
         }
+      </div>
       </div>
     )
   }

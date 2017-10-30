@@ -22,12 +22,13 @@ const _FULFILLED = '_FULFILLED' // axios
     , SET_ADDITIONAL_ITEM_INFO = 'SET_ADDITIONAL_ITEM_INFO'
     //, UNDO_REMOVE = 'UNDO_REMOVE'
     // Employee users:
-    , DISPLAY_INQUIRIES = 'DISPLAY_INQUIRIES'
+    , GET_ALL_INQUIRIES = 'GET_ALL_INQUIRIES'
     , DISPLAY_INQUIRY_ITEMS = 'DISPLAY_INQUIRY_ITEMS'
     // Admin users:
     //, DELETE_INQUIRY = 'DELETE_INQUIRY'
     , initialState = {
         temporaryItem: {},
+        inquiryList: [],
         itemList:[
           {
             itemtype: 'Valve',
@@ -83,6 +84,7 @@ export function removeInquiryItem(index){
 export function submitInquiry(inquiry){
   let responseValue = axios.post('/api/inquiries', inquiry)
     .then(res => {
+      //console.log(res.data);
       return res.data;
     })
     .catch(err => {
@@ -206,6 +208,29 @@ export function setAdditionalItemInfo(additionaliteminfo){
   }
 };
 
+export function getAllInquiries(){
+  let inquiries = axios.get('/api/inquiries')
+    .then(res=> {
+      return res.data;
+    });
+  console.log(inquiries)
+  return {
+    type: GET_ALL_INQUIRIES,
+    payload: inquiries
+  }
+}
+
+// export function getItems(inquiryid){
+//   let items = axios.get(`/api/inquiries/inquiryitems/${inquiryid}`)
+//     .then(res=> {
+//       return res.data;
+//     });
+//     return {
+//       type: GET_ITEMS,
+//       payload: items
+//     }
+// }
+
 export default function inquiries_reducer(state = initialState, action){
   switch(action.type){
     case ADD_INQUIRY_ITEM:
@@ -216,9 +241,16 @@ export default function inquiries_reducer(state = initialState, action){
       let itemList_remove = state.itemList.slice();
       itemList_remove.splice(action.payload,1);
       return Object.assign({}, state, {itemList: itemList_remove});
-    case SUBMIT_INQUIRY + _FULFILLED:
-      if(action.payload){
+    case SUBMIT_INQUIRY: //+ _FULFILLED:
+      if(action.payload != null){
         return Object.assign({}, state, {itemList: action.payload});
+      }else{
+        return state;
+      }
+    case GET_ALL_INQUIRIES + _FULFILLED:
+      console.log(action.payload);
+      if(action.payload){
+        return Object.assign({}, state, {inquiryList: action.payload});
       }else{
         return state;
       }

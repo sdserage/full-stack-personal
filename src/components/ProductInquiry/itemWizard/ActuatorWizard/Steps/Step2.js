@@ -67,31 +67,37 @@ class Step2 extends Component {
     const {localTorque, nmMode} = this.state;
     return(
       <div>
-        <Link to={step1}>
-          <div>Valve Size: NPS {valvesize} inch</div>
+        <div className="wizard-background"></div>
+        <Link to="/productinquiry">
+          <div className="cancel">Cancel</div>
         </Link>
-        <h3>What is the torque requirement of your valve?</h3>
-        <h4>Warning: This is a prototype conversion formula. Numbers may slowly round up or down as switched back and forth between in-lb and N&middot;m causing inaccuracy with each iteration.</h4>
-        <div>
-          <div onClick={()=>this.toggleMode(false)} className="inch" style={nmMode ? {color: 'black'} : {color: 'red'}}>in-lb</div>
-          <div onClick={()=>this.toggleMode(true)} className="mm"style={nmMode ? {color: 'red'} : {color: 'black'}}>N&middot;m</div>
+        <div className='wizard-menu'>
+          <Link to={step1}>
+            <div className="previous">Valve Size: NPS {valvesize} inch</div>
+          </Link>
+          <h3>What is the torque requirement of your valve?</h3>
+          <h4>{/*Warning: This is a prototype conversion formula. Numbers may slowly round up or down as switched back and forth between in-lb and N&middot;m causing inaccuracy with each iteration.*/}</h4>
+          <div>
+            <div onClick={()=>this.toggleMode(false)} className="inch" style={nmMode ? {color: 'black'} : {color: 'red'}}>in-lb</div>
+            <div onClick={()=>this.toggleMode(true)} className="mm"style={nmMode ? {color: 'red'} : {color: 'black'}}>N&middot;m</div>
+          </div>
+          <div style={{display: 'flex'}}>
+            <input type="number"
+             value={localTorque}
+             onChange={(e) => this.updateTorqueValue(Number(e.target.value))}
+            />
+            {nmMode ? <p>N&middot;m</p> : <p>in-lb</p>}
+          </div>
+          <h3>Not sure what your torque your valve uses? That is okay! Just tell us anything you can about your valve below.</h3>
+          <h4>???</h4>
+          <textarea value={valvedescription} rows="5" cols="50" onChange={(e)=>setValveDescription(e.target.value)}></textarea>
+          {
+            (typeof torque === 'number' || valvedescription) &&
+              <Link to={nextPath}>
+                <div className="next">Next</div>
+              </Link>
+          }
         </div>
-        <div style={{display: 'flex'}}>
-          <input type="number"
-           value={localTorque}
-           onChange={(e) => this.updateTorqueValue(Number(e.target.value))}
-          />
-          {nmMode ? <p>N&middot;m</p> : <p>in-lb</p>}
-        </div>
-        <h3>Not sure what your torque your valve uses? That is okay! Just tell us anything you can about your valve below.</h3>
-        <h4>???</h4>
-        <textarea value={valvedescription} rows="5" cols="50" onChange={(e)=>setValveDescription(e.target.value)}></textarea>
-        {
-          (typeof torque === 'number' || valvedescription) &&
-            <Link to={nextPath}>
-              <div>Next</div>
-            </Link>
-        }
       </div>
     )
   }

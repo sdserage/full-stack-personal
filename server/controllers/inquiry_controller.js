@@ -25,7 +25,7 @@ module.exports = {
                 item.pipesizeadditionalinfo,
                 item.additionaliteminfo
               ]);
-              break;
+              return;
             case "Instrumentation":
               db.create_instrumentation([
                 inquiryid,
@@ -37,7 +37,7 @@ module.exports = {
                 item.pipesizeadditionalinfo,
                 item.additionaliteminfo
               ]);
-              break;
+              return;
             case "Dust Collector":
               db.create_dust_collector([
                 inquiryid,
@@ -47,7 +47,7 @@ module.exports = {
                 item.temperature,
                 item.additionaliteminfo
               ]);
-              break;
+              return;
             case "Actuator":
               db.create_actuator([
                 inquiryid,
@@ -59,10 +59,11 @@ module.exports = {
                 item.returntype,
                 item.additionaliteminfo
               ]);
-              break;
+              return;
             default:
-              break;
+              return;
           }
+          res.status(200).send(itemList);
         });
         //req.body = {inquiryid: id[0].inquiryid, itemList};
         //res.status(200).send(req.body);
@@ -73,7 +74,8 @@ module.exports = {
   },
   getInquiryItems: (req, res, next) => {
     const db = req.app.get('db');
-    db.get_inquiry_items()
+    const {inquiryid} = req.params;
+    db.get_inquiry_items([inquiryid])
       .then(items => res.status(200).send(items))
       .catch(err => res.status(500).send(err));
   },

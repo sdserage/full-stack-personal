@@ -10,10 +10,18 @@ class WizardOff extends Component {
         <Link to='/productinquiry/select-type'>
           <h2 className="add-item">+ Add Item</h2>
         </Link>
-        <h2 className="submit-inquiry">Submit</h2>
+        <h2 onClick={()=>this.props.submitInquiry({userid: this.props.userid, itemList:this.props.itemList})} className="submit-inquiry">Submit</h2>
       </div>
     );
   }
 }
 
-export default connect(null, {submitInquiry})(WizardOff);
+function mapStateToProps(state){
+  return {
+    itemList: state.inquiries.itemList,
+    userid: state.users.user.userid,
+
+  }
+}
+
+export default connect(mapStateToProps, {submitInquiry})(WizardOff);
